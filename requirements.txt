@@ -1,5 +1,5 @@
 django
-psycopg2
+psycopg2-binary==2.9.6
 dj-database-url
 gunicorn
 whitenoise

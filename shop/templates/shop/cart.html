@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+</head>
+<body>
+    <h1>Корзина</h1>
+    <p><strong>Всего товаров: {{ total_quantity }}</strong></p>
+
+    {% if items %}
+        <table border="1" cellpadding="5">
+            <tr>
+                <th>Наименование</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма</th>
+                <th></th>
+            </tr>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{% widthratio item.product.price 1 item.quantity %}</td>
+                    <td><a href="{% url 'remove_from_cart' item.id %}">Удалить</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>Корзина пуста.</p>
+    {% endif %}
+
+    <p><a href="{% url 'index' %}">← Вернуться к товарам</a></p>
+</body>
+</html>

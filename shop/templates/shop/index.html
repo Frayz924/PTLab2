@@ -6,18 +6,21 @@
 </head>
 <body>
     <div>
+        <p><a href="{% url 'cart_detail' %}">Корзина</a></p>
         <h3>Список</h3>
         <table>
             <tr>
                 <td><p>Наименование</p></td>
                 <td><p>Цена</p></td>
                 <td></td>
+                <td></td>
             </tr>
             {% for p in products %}
                 <tr>
                     <td><p>{{ p.name }}</p></td>
                     <td><p>{{ p.price }}</p></td>
-                    <td><p><a href="/buy/{{ p.id }}">Купить</a></p></td>
+                    <td><p><a href="{% url 'buy' p.id %}">Купить</a></p></td>
+                    <td><p><a href="{% url 'add_to_cart' p.id %}">В корзину</a></p></td>
                 </tr>
             {% endfor %}
         </table>
